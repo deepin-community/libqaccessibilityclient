@@ -1,0 +1,3 @@
+usr/include/qaccessibilityclient/
+usr/lib/*/cmake/QAccessibilityClient/
+usr/lib/*/libqaccessibilityclient-qt5.so

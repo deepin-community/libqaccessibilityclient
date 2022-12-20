@@ -1,0 +1,3 @@
+version=3
+
+https://download.kde.org/stable/libqaccessibilityclient/libqaccessibilityclient-([\d.]+)\.tar\.xz

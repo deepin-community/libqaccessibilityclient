@@ -1,0 +1,38 @@
+Source: libqaccessibilityclient
+Section: libs
+Priority: optional
+Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Build-Depends: cmake (>= 2.8.6~), debhelper (>= 11~), pkg-kde-tools,
+ qtbase5-dev,
+ extra-cmake-modules,
+Standards-Version: 4.4.0
+Homepage: https://phabricator.kde.org/source/libqaccessibilityclient
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/extras/libqaccessibilityclient
+Vcs-Git: https://salsa.debian.org/qt-kde-team/extras/libqaccessibilityclient.git
+
+Package: libqaccessibilityclient-qt5-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libqaccessibilityclient-qt5-0 (= ${binary:Version}),
+         qtbase5-dev,
+         ${misc:Depends}
+Breaks: libqaccessibilityclient-dev (<< 0.2.0~)
+Replaces: libqaccessibilityclient-dev (<< 0.2.0~)
+Description: helper to make writing accessibility tools easier -- development
+ Helper library to make writing accessibility tools easier.  Used by
+ screen readers for example.
+ .
+ This package contains the development files.
+
+Package: libqaccessibilityclient-qt5-0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: helper to make writing accessibility tools easier
+ Helper library to make writing accessibility tools easier.  Used by
+ screen readers for example.
+ .
+ This package contains the shared library.

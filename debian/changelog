@@ -1,0 +1,144 @@
+libqaccessibilityclient (0.4.1-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:46:21 +0800
+
+libqaccessibilityclient (0.4.1-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Bump Standards-Version to 4.4.0, no changes required.
+  * Stop specifying LIB_INSTALL_DIR for cmake, as ECM already does that.
+  * Disable the build of tests and example (passing -DBUILD_TESTING=OFF to
+    cmake), as they are not run anyway
+    - drop debian/not-installed, no more needed now
+  * Drop the unused 'testsuite' autopkgtest.
+
+ -- Pino Toscano <pino@debian.org>  Mon, 08 Jul 2019 21:44:16 +0200
+
+libqaccessibilityclient (0.3.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Switch watch file back to use "stable" releases, now that there are again.
+  * Update the patches:
+    - libdir.diff: drop, fixed upstream
+    - upstream_Add-missing-virtual-destructor.patch: drop, backported from
+      upstream
+    - upstream_Compile-with-clang-and-make-sure-qHash-works-with-Ac.patch:
+      drop, backported from upstream
+  * Add the new required extra-cmake-modules build dependency.
+  * Install README.md as documentation instead of README.
+  * Disable the test suite, since it needs D-Bus & AT-SPI.
+  * Update symbols file.
+  * Bump Standards-Version to 4.2.1, no changes required.
+
+ -- Pino Toscano <pino@debian.org>  Mon, 19 Nov 2018 22:00:16 +0100
+
+libqaccessibilityclient (0.2.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Move the acc file from libqaccessibilityclient-qt5-0 to
+    libqaccessibilityclient-qt5-dev, and make it work.
+  * Bump Standards-Version to 4.2.0, no changes required.
+
+ -- Pino Toscano <pino@debian.org>  Fri, 03 Aug 2018 07:07:39 +0200
+
+libqaccessibilityclient (0.2.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Make libqaccessibilityclient-qt5-dev break/replace the old
+    libqaccessibilityclient-dev, since they have files in common.
+  * Add the allow-stderr restriction to the 'acc' autopkgtest, since it is how
+    acc works.
+  * Mark libqaccessibilityclient-qt5-dev as Multi-Arch: same.
+
+ -- Pino Toscano <pino@debian.org>  Thu, 02 Aug 2018 07:26:03 +0200
+
+libqaccessibilityclient (0.2.0-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Maximiliano Curia ]
+  * Update vcs and homepage fields
+
+  [ Pino Toscano ]
+  * New upstream release.
+  * Switch watch file to use "unstable" releases, even if the latest looks
+    stable.
+  * Build with Qt5 instead of Qt4: (Closes: #875035)
+    - switch libqt4-dev build & runtime dependency to qtbase5-dev
+    - adapt the names of the binaries to the new library name:
+      - libqaccessibilityclient0 -> libqaccessibilityclient-qt5-0
+      - libqaccessibilityclient-dev -> libqaccessibilityclient-qt5-dev
+    - update install files
+    - update symbols file
+  * Update the patches:
+    - upstream_qt4-link-to-QtGui.patch: drop, backported from upstream
+  * Backport upstream commit f5a27fab1eda69c6cca24463868262f487977aac to fix
+    the destructor of an internal class; patch
+    upstream_Add-missing-virtual-destructor.patch.
+  * Backport upstream commit 34f6084ff3ba1dd025cae17e5d114caff1d7fa6f to fix
+    build with newer versions of GCC/Clang; patch
+    upstream_Compile-with-clang-and-make-sure-qHash-works-with-Ac.patch.
+    (Closes: #897792)
+  * Bump the debhelper compatibility to 11:
+    - bump the debhelper build dependency to 11~
+    - bump compat to 11
+    - remove --parallel for dh, as now done by default
+  * Use https for Format in copyright.
+  * Bump Standards-Version to 4.1.5, no changes required.
+
+ -- Pino Toscano <pino@debian.org>  Sun, 22 Jul 2018 23:04:19 +0200
+
+libqaccessibilityclient (0.1.1-5) unstable; urgency=medium
+
+  * Team upload.
+  * Hide the symbols by default; public symbols are marked as such already.
+    This should reduce the number of exported symbols, and thus our symbols
+    file can be simplified a bit.
+  * Add Build-Depends-Package in symbols file.
+
+ -- Pino Toscano <pino@debian.org>  Sun, 21 Aug 2016 22:47:07 +0200
+
+libqaccessibilityclient (0.1.1-4) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols file. (Closes: #827152, #827153)
+
+ -- Pino Toscano <pino@debian.org>  Sun, 21 Aug 2016 18:20:54 +0200
+
+libqaccessibilityclient (0.1.1-3) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols file.
+  * Backport upstream commit 1e1c469597e0e692caea11c89f6da831ad2410b3 to
+    add missing linking to QtGui; patch upstream_qt4-link-to-QtGui.patch.
+  * Small touches to descriptions.
+  * Enable parallel build.
+
+ -- Pino Toscano <pino@debian.org>  Tue, 31 May 2016 07:43:56 +0200
+
+libqaccessibilityclient (0.1.1-2) unstable; urgency=medium
+
+  [ Maximiliano Curia ]
+  * Add upstream metadata (DEP-12)
+  * Drop XS-Testsuite field, no longer needed
+  * debian/control: Update Vcs-Browser and Vcs-Git fields
+
+  [ Automatic packaging ]
+  * Bump Standards-Version to 3.9.8
+  * Update build-deps and deps with the info from cmake
+  * Update symbols files from buildds logs (0.1.1-1).
+  * Update symbols files.
+  * Add a .gitattributes file to use dpkg-mergechangelogs
+
+ -- Maximiliano Curia <maxy@debian.org>  Wed, 04 May 2016 19:07:45 +0200
+
+libqaccessibilityclient (0.1.1-1) experimental; urgency=medium
+
+  * Initial release.
+  * New patch: libdir.diff
+
+ -- Maximiliano Curia <maxy@debian.org>  Thu, 19 Feb 2015 10:20:05 +0100

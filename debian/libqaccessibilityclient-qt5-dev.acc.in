@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<descriptor>
+
+<version>
+    0.2.0
+</version>
+
+<headers>
+    /usr/include/qaccessibilityclient/
+</headers>
+
+<libs>
+    /usr/lib/@@DEB_HOST_MULTIARCH@@/libqaccessibilityclient-qt5.so
+</libs>
+
+<gcc_options>
+    -fPIC
+    -std=c++11
+</gcc_options>
+
+</descriptor>
