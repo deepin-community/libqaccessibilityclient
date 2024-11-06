@@ -1,2 +1,3 @@
 usr/lib/*/libqaccessibilityclient-qt5.so.0
 usr/lib/*/libqaccessibilityclient-qt5.so.0.*
+usr/share/qlogging-categories5/libqaccessibilityclient.categories

@@ -1,37 +1,21 @@
 /*
-    Copyright 2012 Frederik Gladhorn <gladhorn@kde.org>
+    SPDX-FileCopyrightText: 2012 Frederik Gladhorn <gladhorn@kde.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) version 3, or any
-    later version accepted by the membership of KDE e.V. (or its
-    successor approved by the membership of KDE e.V.), which shall
-    act as a proxy defined in Section 6 of version 3 of the license.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 
 #include "dbusconnection.h"
 
-#include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusPendingReply>
-#include <QtCore/QDebug>
+#include <QDBusMessage>
+#include <QDBusPendingReply>
+#include <QDebug>
 
 using namespace QAccessibleClient;
 
 DBusConnection::DBusConnection()
     : QObject()
     , m_connection(QDBusConnection::sessionBus())
-    , m_initWatcher(nullptr)
-    , m_status(Disconnected)
 {
     init();
 }
@@ -44,9 +28,9 @@ void DBusConnection::init()
         return;
     }
 
-    QDBusMessage m = QDBusMessage::createMethodCall(QLatin1String("org.a11y.Bus"),
-                                                    QLatin1String("/org/a11y/bus"),
-                                                    QLatin1String("org.a11y.Bus"), QLatin1String("GetAddress"));
+    QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.a11y.Bus"),
+                                                    QStringLiteral("/org/a11y/bus"),
+                                                    QStringLiteral("org.a11y.Bus"), QStringLiteral("GetAddress"));
 
     QDBusPendingCall async = c.asyncCall(m);
     m_initWatcher = new QDBusPendingCallWatcher(async, this);
@@ -64,7 +48,7 @@ void DBusConnection::initFinished()
     } else {
         QString busAddress = reply.value();
         qDebug() << "Got Accessibility DBus address:" << busAddress;
-        QDBusConnection c = QDBusConnection::connectToBus(busAddress, QLatin1String("a11y"));
+        QDBusConnection c = QDBusConnection::connectToBus(busAddress, QStringLiteral("a11y"));
         if (c.isConnected()) {
             qDebug() << "Connected to Accessibility DBus at address=" << busAddress;
             m_connection = c;
@@ -75,7 +59,7 @@ void DBusConnection::initFinished()
     }
     m_initWatcher->deleteLater();
     m_initWatcher = nullptr;
-    emit connectionFetched();
+    Q_EMIT connectionFetched();
 }
 
 bool DBusConnection::isFetchingConnection() const
@@ -96,3 +80,5 @@ DBusConnection::Status DBusConnection::status() const
 {
     return m_status;
 }
+
+#include "moc_dbusconnection.cpp"

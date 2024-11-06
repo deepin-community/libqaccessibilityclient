@@ -1,27 +1,14 @@
 /*
-    Copyright 2012 Frederik Gladhorn <gladhorn@kde.org>
+    SPDX-FileCopyrightText: 2012 Frederik Gladhorn <gladhorn@kde.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) version 3, or any
-    later version accepted by the membership of KDE e.V. (or its
-    successor approved by the membership of KDE e.V.), which shall
-    act as a proxy defined in Section 6 of version 3 of the license.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #include "accessibleobject.h"
+#include "qaccessibilityclient_debug.h"
 
-#include <qstring.h>
-#include <qdebug.h>
+#include <QString>
+#include <QDebug>
 
 #include "accessibleobject_p.h"
 #include "registry_p.h"
@@ -117,7 +104,7 @@ QList<AccessibleObject> AccessibleObject::children() const
 QVector< QList<AccessibleObject> > AccessibleObject::children(const QList<Role> &roles) const
 {
     QVector< QList<AccessibleObject> > result(roles.count());
-    QList<AccessibleObject> all = children();
+    const QList<AccessibleObject> all = children();
     for(int i = 0; i < all.count(); ++i) {
         const AccessibleObject &child = all[i];
         int index = roles.indexOf(child.role());
@@ -140,6 +127,11 @@ AccessibleObject AccessibleObject::child(int index) const
 int AccessibleObject::indexInParent() const
 {
     return d->registryPrivate->indexInParent(*this);
+}
+
+QString AccessibleObject::accessibleId() const
+{
+    return d->registryPrivate->accessibleId(*this);
 }
 
 QString AccessibleObject::name() const
@@ -187,7 +179,7 @@ QRect AccessibleObject::boundingRect() const
     if( supportedInterfaces() & AccessibleObject::ComponentInterface ){
         return d->registryPrivate->boundingRect(*this);
     } else {
-        qWarning() << "boundingRect called on accessible that does not implement component";
+        qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "boundingRect called on accessible that does not implement component";
         return QRect();
     }
 }
@@ -197,7 +189,7 @@ QRect AccessibleObject::characterRect(int offset) const
     if( supportedInterfaces() & AccessibleObject::TextInterface ){
         return d->registryPrivate->characterRect(*this, offset);
     } else {
-        qWarning() << "characterRect called on accessible that does not implement text";
+        qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "characterRect called on accessible that does not implement text";
         return QRect();
     }
 }
@@ -212,7 +204,7 @@ int AccessibleObject::caretOffset() const
     if( supportedInterfaces() & AccessibleObject::TextInterface ){
         return d->registryPrivate->caretOffset(*this);
     } else {
-        qWarning() << "caretOffset called on accessible that does not implement text";
+        qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "caretOffset called on accessible that does not implement text";
         return 0;
     }
 }
@@ -222,7 +214,7 @@ int AccessibleObject::characterCount() const
     if( supportedInterfaces() & AccessibleObject::TextInterface ){
         return d->registryPrivate->characterCount(*this);
     } else {
-        qWarning() << "characterCount called on accessible that does not implement text";
+        qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "characterCount called on accessible that does not implement text";
         return 0;
     }
 }
@@ -231,7 +223,7 @@ QString AccessibleObject::text(int startOffset, int endOffset) const
 {
     if( supportedInterfaces() & AccessibleObject::TextInterface )
         return d->registryPrivate->text(*this, startOffset, endOffset);
-    qWarning() << "text called on accessible that does not implement text";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "text called on accessible that does not implement text";
     return QString();
 }
 
@@ -239,7 +231,7 @@ QString AccessibleObject::textWithBoundary(int offset, TextBoundary boundary, in
 {
     if (supportedInterfaces() & AccessibleObject::TextInterface)
         return d->registryPrivate->textWithBoundary(*this, offset, boundary, startOffset, endOffset);
-    qWarning() << "text called on accessible that does not implement text";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "text called on accessible that does not implement text";
     return QString();
 }
 
@@ -247,7 +239,7 @@ bool AccessibleObject::setText(const QString &text)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->setText(*this, text);
-    qWarning() << "setText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "setText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -255,7 +247,7 @@ bool AccessibleObject::insertText(const QString &text, int position, int length)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->insertText(*this, text, position, length);
-    qWarning() << "insertText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "insertText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -263,7 +255,7 @@ bool AccessibleObject::copyText(int startPos, int endPos)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->copyText(*this, startPos, endPos);
-    qWarning() << "copyText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "copyText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -271,7 +263,7 @@ bool AccessibleObject::cutText(int startPos, int endPos)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->cutText(*this, startPos, endPos);
-    qWarning() << "cutText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "cutText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -279,7 +271,7 @@ bool AccessibleObject::deleteText(int startPos, int endPos)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->deleteText(*this, startPos, endPos);
-    qWarning() << "deleteText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "deleteText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -287,7 +279,7 @@ bool AccessibleObject::pasteText(int position)
 {
     if( supportedInterfaces() & AccessibleObject::EditableTextInterface )
         return d->registryPrivate->pasteText(*this, position);
-    qWarning() << "pasteText called on accessible that does not implement editableText";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "pasteText called on accessible that does not implement editableText";
     return false;
 }
 
@@ -295,7 +287,7 @@ QList< QPair<int,int> > AccessibleObject::textSelections() const
 {
     if(supportedInterfaces() & AccessibleObject::Text)
         return d->registryPrivate->textSelections(*this);
-    qWarning() << "textSelections called on accessible that does not implement text";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "textSelections called on accessible that does not implement text";
     return QList< QPair<int,int> >();
 }
 
@@ -303,20 +295,20 @@ void AccessibleObject::setTextSelections(const QList< QPair<int,int> > &selectio
 {
     if(supportedInterfaces() & AccessibleObject::Text)
         return d->registryPrivate->setTextSelections(*this, selections);
-    qWarning() << "setTextSelections called on accessible that does not implement text";
+    qCWarning(LIBQACCESSIBILITYCLIENT_LOG) << "setTextSelections called on accessible that does not implement text";
 }
 
 QPoint AccessibleObject::focusPoint() const
 {
     Interfaces ifaces = supportedInterfaces();
     if (ifaces & TextInterface) {
-        int offset = caretOffset();
-        QRect r = characterRect(offset);
+        const int offset = caretOffset();
+        const QRect r = characterRect(offset);
         if (r.x() != 0 || r.y() != 0)
             return r.center();
     }
     if (ifaces & ComponentInterface) {
-        QRect r = boundingRect();
+        const QRect r = boundingRect();
         if (!r.isNull())
             return r.center();
     }
@@ -529,6 +521,7 @@ QString AccessibleObject::stateString() const
     if (isSelected()) s << QStringLiteral("Selected");
     if (isSensitive()) s << QStringLiteral("Sensitive");
     if (isSingleLine()) s << QStringLiteral("SingleLine");
+    if (isEnabled()) s << QStringLiteral("Enabled");
     return s.join(QLatin1String(", "));
 }
 

@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 0.3.0 amd64
+# SymbolsHelper-Confirmed: 0.6.0 amd64 i386
 libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
 * Build-Depends-Package: libqaccessibilityclient-qt5-dev
  _ZN17QAccessibleClient16AccessibleObject10deleteTextEii@Base 0+git20130108
@@ -20,6 +20,10 @@ libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
  _ZN17QAccessibleClient16AccessibleObjectD1Ev@Base 0+git20130108
  _ZN17QAccessibleClient16AccessibleObjectD2Ev@Base 0+git20130108
  _ZN17QAccessibleClient16AccessibleObjectaSERKS0_@Base 0+git20130108
+ _ZN17QAccessibleClient23RegistryPrivateCacheApi12setCacheTypeENS0_9CacheTypeE@Base 0.6.0
+ _ZN17QAccessibleClient23RegistryPrivateCacheApi16clearClientCacheEv@Base 0.6.0
+ _ZN17QAccessibleClient23RegistryPrivateCacheApiC1EPNS_8RegistryE@Base 0.6.0
+ _ZN17QAccessibleClient23RegistryPrivateCacheApiC2EPNS_8RegistryE@Base 0.6.0
  _ZN17QAccessibleClient8Registry10childAddedERKNS_16AccessibleObjectEi@Base 0+git20130108
  _ZN17QAccessibleClient8Registry10setEnabledEb@Base 0+git20130108
  _ZN17QAccessibleClient8Registry11qt_metacallEN11QMetaObject4CallEiPPv@Base 0+git20130108
@@ -30,7 +34,6 @@ libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
  _ZN17QAccessibleClient8Registry12childRemovedERKNS_16AccessibleObjectEi@Base 0+git20130108
  _ZN17QAccessibleClient8Registry12focusChangedERKNS_16AccessibleObjectE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry12modelChangedERKNS_16AccessibleObjectE@Base 0+git20130108
- _ZN17QAccessibleClient8Registry12setCacheTypeENS0_9CacheTypeE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry12stateChangedERKNS_16AccessibleObjectERK7QStringb@Base 0+git20130108
  _ZN17QAccessibleClient8Registry12textInsertedERKNS_16AccessibleObjectERK7QStringii@Base 0+git20130108
  _ZN17QAccessibleClient8Registry12windowClosedERKNS_16AccessibleObjectE@Base 0+git20130108
@@ -47,7 +50,6 @@ libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
  _ZN17QAccessibleClient8Registry15windowDestroyedERKNS_16AccessibleObjectE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry15windowMaximizedERKNS_16AccessibleObjectE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry15windowMinimizedERKNS_16AccessibleObjectE@Base 0+git20130108
- _ZN17QAccessibleClient8Registry16clearClientCacheEv@Base 0+git20130108
  _ZN17QAccessibleClient8Registry16selectionChangedERKNS_16AccessibleObjectE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry16staticMetaObjectE@Base 0+git20130108
  _ZN17QAccessibleClient8Registry16windowReparentedERKNS_16AccessibleObjectE@Base 0+git20130108
@@ -85,6 +87,7 @@ libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
  _ZNK17QAccessibleClient16AccessibleObject11isMultiLineEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObject11isSensitiveEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObject11stateStringEv@Base 0.3.0
+ _ZNK17QAccessibleClient16AccessibleObject12accessibleIdEv@Base 0.5.0
  _ZNK17QAccessibleClient16AccessibleObject12boundingRectEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObject12currentValueEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObject12isExpandableEv@Base 0+git20130108
@@ -132,15 +135,15 @@ libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-qt5-0 #MINVER#
  _ZNK17QAccessibleClient16AccessibleObject9mdiZOrderEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObject9selectionEv@Base 0+git20130108
  _ZNK17QAccessibleClient16AccessibleObjecteqERKS0_@Base 0+git20130108
+ _ZNK17QAccessibleClient23RegistryPrivateCacheApi17clientCacheObjectERK7QString@Base 0.6.0
+ _ZNK17QAccessibleClient23RegistryPrivateCacheApi18clientCacheObjectsEv@Base 0.6.0
+ _ZNK17QAccessibleClient23RegistryPrivateCacheApi9cacheTypeEv@Base 0.6.0
  _ZNK17QAccessibleClient8Registry10metaObjectEv@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry12applicationsEv@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry17accessibleFromUrlERK4QUrl@Base 0+git20130108
- _ZNK17QAccessibleClient8Registry17clientCacheObjectERK7QString@Base 0+git20130108
- _ZNK17QAccessibleClient8Registry18clientCacheObjectsEv@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry21isScreenReaderEnabledEv@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry23subscribeEventListenersERK6QFlagsINS0_13EventListenerEE@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry24subscribedEventListenersEv@Base 0+git20130108
- _ZNK17QAccessibleClient8Registry9cacheTypeEv@Base 0+git20130108
  _ZNK17QAccessibleClient8Registry9isEnabledEv@Base 0+git20130108
  _ZTI12QDBusContext@Base 0.2.0
  _ZTIN17QAccessibleClient8RegistryE@Base 0+git20130108

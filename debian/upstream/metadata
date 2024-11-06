@@ -1,7 +1,5 @@
-Name: libqaccessibilityclient
-Changelog: https://quickgit.kde.org/?p=libkdeaccessibilityclient.git&a=log
-Contact: gladhorn@kde.org
+Changelog: https://invent.kde.org/libraries/libqaccessibilityclient/-/commits/master/
 Donation: https://www.kde.org/community/donations/index.php
-Repository: https://anongit.kde.org/libkdeaccessibilityclient.git
-Repository-Browse: https://quickgit.kde.org/?p=libkdeaccessibilityclient.git
+Repository: https://invent.kde.org/libraries/libqaccessibilityclient
+Repository-Browse: https://invent.kde.org/libraries/libqaccessibilityclient.git
 Security-Contact: security@kde.org
