@@ -1,21 +1,7 @@
 /*
-    Copyright 2012 Frederik Gladhorn <gladhorn@kde.org>
+    SPDX-FileCopyrightText: 2012 Frederik Gladhorn <gladhorn@kde.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) version 3, or any
-    later version accepted by the membership of KDE e.V. (or its
-    successor approved by the membership of KDE e.V.), which shall
-    act as a proxy defined in Section 6 of version 3 of the license.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef QACCESSIBILITYCLIENT_REGISTRY_P_H
@@ -23,12 +9,11 @@
 
 #include <atspi/atspi-constants.h>
 
-#include <qobject.h>
-#include <qmap.h>
-#include <qdbuscontext.h>
-#include <qdbusargument.h>
-#include <qsignalmapper.h>
-#include <qsharedpointer.h>
+#include <QObject>
+#include <QMap>
+#include <QDBusContext>
+#include <QSignalMapper>
+#include <QSharedPointer>
 
 #include "atspi/dbusconnection.h"
 #include "qaccessibilityclient/registry.h"
@@ -42,13 +27,13 @@ class QDBusPendingCallWatcher;
 namespace QAccessibleClient {
 
 class DBusConnection;
-class AtSpiDBus;
 
 class RegistryPrivate :public QObject, public QDBusContext
 {
     Q_OBJECT
 public:
     RegistryPrivate(Registry *qq);
+    ~RegistryPrivate() override;
 
     void init();
 
@@ -63,6 +48,7 @@ public:
     void subscribeEventListeners(const Registry::EventListeners & listeners);
     Registry::EventListeners eventListeners() const;
 
+    QString accessibleId(const AccessibleObject &object) const;
     QString name(const AccessibleObject &object) const;
     QString description(const AccessibleObject &object) const;
     AccessibleObject::Role role(const AccessibleObject &object) const;
@@ -171,17 +157,16 @@ private Q_SLOTS:
 
 private:
     QVariant getProperty ( const QString &service, const QString &path, const QString &interface, const QString &name ) const;
-    bool subscribeEvent(const QLatin1String &iface, const QLatin1String &signal);
     static AccessibleObject::Role atspiRoleToRole(AtspiRole role);
 
     DBusConnection conn;
     QSignalMapper m_actionMapper;
-    Registry *q;
+    Registry *const q;
     Registry::EventListeners m_subscriptions;
     Registry::EventListeners m_pendingSubscriptions;
     QHash<QString, AccessibleObject::Interface> interfaceHash;
     QSignalMapper m_eventMapper;
-    ObjectCache *m_cache;
+    ObjectCache *m_cache = nullptr;
 //     typedef QMap<QString, QSharedPointer<AccessibleObjectPrivate> >::Iterator AccessibleObjectsHashIterator;
 //     typedef QMap<QString, QSharedPointer<AccessibleObjectPrivate> >::ConstIterator AccessibleObjectsHashConstIterator;
 //     QMap<QString, QSharedPointer<AccessibleObjectPrivate> > accessibleObjectsHash;

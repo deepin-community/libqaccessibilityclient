@@ -1,8 +1,71 @@
-libqaccessibilityclient (0.4.1-deepin1) unstable; urgency=medium
+libqaccessibilityclient (0.6.0-3) unstable; urgency=medium
 
-  * Rebuild
+  * Upload to unstable.
+  * Restore Qt 5 packages, to ensure to smoother switch for users of this
+    library:
+    - add back the libqaccessibilityclient-qt5-dev, and
+      libqaccessibilityclient-qt5-0 binaries
+    - perform two separate builds for Qt 5 and Qt 6 versions
+  * Fix the 'acc' autopkgtest:
+    - set -std=c++17 for the Qt 6 library, needed when using Qt 6
+    - fix the path with headers of the Qt 6 library
+    - add some hints to add & exclude include paths, so the Qt 6 headers are
+      not used for the Qt 5 library, and viceversa.
+  * Drop old breaks/replaces.
+  * Stop shipping the README.md file in libqaccessibilityclient-qt5-dev,
+    as it does not provide a lot of value.
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:46:21 +0800
+ -- Pino Toscano <pino@debian.org>  Sun, 25 Aug 2024 07:57:07 +0200
+
+libqaccessibilityclient (0.6.0-2) experimental; urgency=medium
+
+  [ Patrick Franz ]
+  * Team upload.
+  * Build against Qt 6:
+    - New binary packages libqaccessibilityclient-qt6-0 and
+      libqaccessibilityclient-qt6-dev.
+  * Bump Standards-Version to 4.7.0 (no changes needed).
+  * Modernize building by using dh-sequence build-dependencies and
+    dropping manually specified addons and buildsystems for dh.
+  * Update d/copyright.
+
+ -- Patrick Franz <deltaone@debian.org>  Tue, 18 Jun 2024 22:13:27 +0200
+
+libqaccessibilityclient (0.6.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update the upstream GPG signing key.
+  * Update install files.
+  * Update symbols file.
+
+ -- Pino Toscano <pino@debian.org>  Sat, 09 Dec 2023 10:56:57 +0100
+
+libqaccessibilityclient (0.5.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump debhelper from old 11 to 13.
+  * Set debhelper-compat version in Build-Depends.
+  * Set field Upstream-Contact in debian/copyright.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata (already
+    present in machine-readable debian/copyright).
+  * Update standards version to 4.6.2, no changes needed.
+  * Remove inactive Uploaders, adding myself as one to avoid leaving the source
+    with no human maintainers.
+  * Bump watch file to v4, no changes required.
+  * Update the upstream GPG signing key, pointing the watch file to fetch it.
+  * Add Rules-Requires-Root: no.
+  * Add the configuration for the CI on salsa.
+  * Update the build dependencies according to the upstream build system:
+    - bump cmake to 3.16.0
+    - bump extra-cmake-modules to 5.91.0
+    - bump Qt packages to 5.15.2
+  * Update install files.
+  * Update symbols file.
+  * Update 'acc' autopkgtest to point to the new directory with headers.
+  * Switch all the upstream references to "home" and repository to
+    https://invent.kde.org/libraries/libqaccessibilityclient.
+
+ -- Pino Toscano <pino@debian.org>  Thu, 02 Nov 2023 23:44:20 +0100
 
 libqaccessibilityclient (0.4.1-1) unstable; urgency=medium
 

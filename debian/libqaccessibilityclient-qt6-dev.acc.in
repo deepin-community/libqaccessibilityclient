@@ -6,28 +6,28 @@
 </version>
 
 <headers>
-    /usr/include/QAccessibilityClient/
+    /usr/include/QAccessibilityClient6/
 </headers>
 
 <add_include_paths>
-    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/
-    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/QtCore/
-    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/QtGui/
-</add_include_paths>
-
-<skip_include_paths>
     /usr/include/@@DEB_HOST_MULTIARCH@@/qt6/
     /usr/include/@@DEB_HOST_MULTIARCH@@/qt6/QtCore/
     /usr/include/@@DEB_HOST_MULTIARCH@@/qt6/QtGui/
+</add_include_paths>
+
+<skip_include_paths>
+    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/
+    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/QtCore/
+    /usr/include/@@DEB_HOST_MULTIARCH@@/qt5/QtGui/
 </skip_include_paths>
 
 <libs>
-    /usr/lib/@@DEB_HOST_MULTIARCH@@/libqaccessibilityclient-qt5.so
+    /usr/lib/@@DEB_HOST_MULTIARCH@@/libqaccessibilityclient-qt6.so
 </libs>
 
 <gcc_options>
     -fPIC
-    -std=c++11
+    -std=c++17
 </gcc_options>
 
 </descriptor>
